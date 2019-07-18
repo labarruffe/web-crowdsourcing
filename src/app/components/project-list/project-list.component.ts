@@ -47,14 +47,4 @@ export class ProjectListComponent implements OnInit {
 
     this.findProjectOwnerInfo = '5d30184589abff5249aebea6';
   }
-
-  // findProjectOwnerInfo(id: string): string {
-    // console.log(this.projectOwners);
-    // const projectOwner = this.projectOwners.find(
-      // (element) => {
-        // console.log('element/id',element);
-      // });
-    // return projectOwner;
-    // return 'certo';
-  // }
 }

@@ -4,8 +4,15 @@
       <div class="card-body">
         <h5 class="card-title">{{project?.topic}}</h5>
         <p class="card-text">{{project?.title}}</p>
-        <p class="card-text">Idealizador: {{ findProjectOwner }}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text">Idealizador: {{project?.owner_id.full_name}}</p>
+        <div class="card-text">
+          Voluntários:
+          <div *ngFor="let volunteer of project?.volunteers_id">
+              {{volunteer.full_name}}
+          </div>
+        </div>
+        <a href="#" class="btn btn-info">Atualizar</a>
+        <a href="#" class="btn btn-danger">Encerrar</a>
       </div>
     </div>
   </div>
