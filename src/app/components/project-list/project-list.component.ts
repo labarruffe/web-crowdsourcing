@@ -4,6 +4,7 @@ import { Project } from 'src/app/models/project';
 import { ProjectOwnerService } from 'src/app/services/project-owner.service';
 import { ProjectOwner } from 'src/app/models/project-owner';
 import { Volunteer } from 'src/app/models/volunteer';
+import { StateControlService } from 'src/app/services/state-control.service';
 
 @Component({
   selector: 'app-project-list',
@@ -14,11 +15,12 @@ export class ProjectListComponent implements OnInit {
   projects: Project[];
   projectOwners: ProjectOwner[];
   volunteers: Volunteer[];
-  findProjectOwnerInfo: any;
+
   constructor(
     private projectService: ProjectService,
     private projectOwnerService: ProjectOwnerService,
-  ) { }
+    private stateControlService: StateControlService,
+  ) {}
 
   ngOnInit() {
     this.listAllProjects();
@@ -35,17 +37,6 @@ export class ProjectListComponent implements OnInit {
       }
     )
 
-    this.projectOwnerService.getAll().subscribe(
-      (result) => {
-        this.projectOwners = result;
-      },
-      (error) => {
-        alert('Erro ao carregar todos dados de Donos de Projeto');
-        console.log(error);
-      }
-    )  
-
-    this.findProjectOwnerInfo = '5d30184589abff5249aebea6';
   }
 
   delete(id: string) {
@@ -59,5 +50,9 @@ export class ProjectListComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  addProject(project: Project) {
+    this.projects.push(project);
   }
 }

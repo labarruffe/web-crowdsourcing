@@ -5,8 +5,7 @@ export class Project {
     owner_id: string;
     volunteers_id: string[];
 
-    constructor(_id: string, topic: string, title: string, owner_id: string, volunteers_id: string[]) {
-        this._id = _id;
+    constructor(topic: string, title: string, owner_id: string, volunteers_id: string[]) {
         this.topic = topic;
         this.title = title;
         this.owner_id = owner_id;

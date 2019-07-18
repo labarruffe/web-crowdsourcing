@@ -26,6 +26,10 @@
           <app-project></app-project>  
           <button (click)="orderCreateProject()" class="btn btn-primary">Criar</button>
         </div>
+        <div *ngIf="stepControl == 3">
+          <app-project-list>
+          </app-project-list>  
+        </div>
       </div>
   </div>
 </div>

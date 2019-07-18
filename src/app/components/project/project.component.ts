@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
+import { StateControlService } from 'src/app/services/state-control.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-project',
@@ -14,20 +16,18 @@ export class ProjectComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
+    private stateControlService: StateControlService,
   ) { }
 
   ngOnInit() {
   }
 
-  create(projectOwner_id: string) {
-    this.project = new Project('', this.topic, this.title, projectOwner_id, []);
-    this.projectService.post(this.project).subscribe(
-      (response) => {
-        alert(response);
-      },
-      (error) => {
-        alert(error);
-      }
-    ); 
+  create(projectOwner_id: string): Observable<Project> {
+    this.project = new Project(this.topic, this.title, projectOwner_id, []);
+    return this.projectService.post(this.project);
+  }
+
+  setProject(project: Project){
+    this.project = project;
   }
 }
