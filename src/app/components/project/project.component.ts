@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/models/project';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
+  project: Project;
+  topic = '';
+  title = '';
 
-  constructor() { }
+  constructor(
+    private projectService: ProjectService,
+  ) { }
 
   ngOnInit() {
   }
 
+  create(projectOwner_id: string) {
+    this.project = new Project('', this.topic, this.title, projectOwner_id, []);
+    this.projectService.post(this.project).subscribe(
+      (response) => {
+        alert(response);
+      },
+      (error) => {
+        alert(error);
+      }
+    ); 
+  }
 }

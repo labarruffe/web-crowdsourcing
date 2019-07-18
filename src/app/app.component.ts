@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProjectOwner } from './models/project-owner';
 import { ProjectOwnerService } from './services/project-owner.service';
 import { Volunteer } from './models/volunteer';
 import { VolunteerService } from './services/volunteer.service';
+import { ProjectComponent } from './components/project/project.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,11 @@ import { VolunteerService } from './services/volunteer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild(ProjectComponent) childProjectComponent: ProjectComponent;
+
+  projectOwner: ProjectOwner;
+  volunteer: Volunteer;
+
   stepControl = 1;
   titleOfSecondStep = '';
 
@@ -22,8 +28,8 @@ export class AppComponent {
     this.stepControl = 2;
     if (isProjectOwner) {
       this.titleOfSecondStep = 'Cadastrar projeto';
-      const projectOwner = new ProjectOwner('', fullName);
-      this.projectOwnerService.post(projectOwner).subscribe(
+      this.projectOwner = new ProjectOwner('', fullName);
+      this.projectOwnerService.post(this.projectOwner).subscribe(
         (response) => {
           alert(response);
         },
@@ -33,8 +39,8 @@ export class AppComponent {
       );
     } else {
       this.titleOfSecondStep = 'Voluntariar-se em um projeto';    
-      const volunteer = new Volunteer('', fullName);
-      this.volunteerService.post(volunteer).subscribe(
+      this.volunteer = new Volunteer('', fullName);
+      this.volunteerService.post(this.volunteer).subscribe(
         (response) => {
           alert(response);
         },
@@ -43,5 +49,9 @@ export class AppComponent {
         }
       );  
     }
+  }
+
+  orderCreateProject() {
+    this.childProjectComponent.create(this.projectOwner._id);
   }
 }
