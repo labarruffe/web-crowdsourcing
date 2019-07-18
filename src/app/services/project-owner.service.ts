@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class ProjectOwnerService {
 
-  private baseUrl = 'http://localhost:3000/crowdsourcing/';
+  private baseUrl = 'http://localhost:3000/crowdsourcing';
 
   constructor(
     private http: HttpClient) {}

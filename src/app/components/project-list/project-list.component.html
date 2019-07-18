@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-6" *ngFor="let project of projects">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{project?.topic}}</h5>
+        <p class="card-text">{{project?.title}}</p>
+        <p class="card-text">Idealizador: {{ findProjectOwner }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>

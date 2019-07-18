@@ -10,6 +10,7 @@ import { ProjectOwnerComponent } from './components/project-owner/project-owner.
 import { ProjectComponent } from './components/project/project.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectListComponent } from './components/project-list/project-list.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ProjectOwnerComponent,
     ProjectComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,

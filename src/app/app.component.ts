@@ -52,6 +52,7 @@ export class AppComponent {
   }
 
   orderCreateProject() {
+    this.stepControl = 3;
     this.childProjectComponent.create(this.projectOwner._id);
   }
 }
