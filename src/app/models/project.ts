@@ -1,19 +1,16 @@
-import { Volunteer } from "./volunteer";
-import { ProjectOwner } from "./project-owner";
-
 export class Project {
     _id: string;
     topic: string;
     title: string;
-    owner: ProjectOwner;
-    volunteers: Volunteer[];
+    owner_id: string;
+    volunteers_id: string[];
 
-    constructor(_id: string, topic: string, title: string, owner: ProjectOwner, volunteers: Volunteer[]) {
+    constructor(_id: string, topic: string, title: string, owner_id: string, volunteers_id: string[]) {
         this._id = _id;
         this.topic = topic;
         this.title = title;
-        this.owner = owner;
-        this.volunteers = volunteers;
+        this.owner_id = owner_id;
+        this.volunteers_id = volunteers_id;
     }
 }
   
