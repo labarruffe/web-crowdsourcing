@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjectOwnerService } from './services/project-owner.service';
+import { ProjectOwnerComponent } from './components/project-owner/project-owner.component';
+import { ProjectComponent } from './components/project/project.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProjectOwnerComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
