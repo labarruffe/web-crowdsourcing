@@ -47,4 +47,17 @@ export class ProjectListComponent implements OnInit {
 
     this.findProjectOwnerInfo = '5d30184589abff5249aebea6';
   }
+
+  delete(id: string) {
+    this.projectService.delete(id).subscribe(
+      (result) => {
+        alert('Projeto deletado com sucesso: ' + result.title);
+        this.listAllProjects();
+      },
+      (error) => {
+        alert('Erro ao deletar projeto');
+        console.log(error);
+      }
+    )
+  }
 }
