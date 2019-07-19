@@ -21,6 +21,8 @@ export class AppComponent {
 
   stepControl = 1;
   titleOfSecondStep = '';
+  isProjectOwner = false;
+  fullName = '';
 
   constructor(
     private projectOwnerService: ProjectOwnerService,
@@ -30,7 +32,8 @@ export class AppComponent {
 
   chooseRole(fullName: string, isProjectOwner: boolean) {
     this.stepControl = 2;
-    if (isProjectOwner) {
+    this.isProjectOwner = isProjectOwner;
+    if (this.isProjectOwner) {
       this.titleOfSecondStep = 'Cadastrar projeto';
       this.projectOwner = new ProjectOwner(fullName);
       this.projectOwnerService.post(this.projectOwner).subscribe(
@@ -65,5 +68,12 @@ export class AppComponent {
         alert(error);
       }
     );
+  }
+
+  backToTop() {
+    this.stepControl = 1;
+    this.titleOfSecondStep = '';
+    this.isProjectOwner = false;
+    this.fullName = '';
   }
 }

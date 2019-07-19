@@ -11,8 +11,13 @@
               {{volunteer.full_name}}
           </div>
         </div>
-        <button  class="btn btn-info">Atualizar</button>
-        <button (click)="delete(project?._id)" class="btn btn-danger">Encerrar</button>
+        <div *ngIf="isProjectOwner">
+          <button  class="btn btn-info">Atualizar</button>
+          <button (click)="delete(project?._id)" class="btn btn-danger">Encerrar</button>
+        </div>
+        <div *ngIf="!isProjectOwner">
+          <button (click)="participate(project)" class="btn btn-danger">Participar</button>
+        </div>
       </div>
     </div>
   </div>

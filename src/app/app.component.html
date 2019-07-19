@@ -1,12 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
+  <button (click)="backToTop()" class="btn btn-link">Retornar para o início</button>
   <div class="card">
     <div class="card-body">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Quem sou</li>
           <li *ngIf="stepControl > 1" class="breadcrumb-item">{{ titleOfSecondStep }}</li>
-          <li *ngIf="stepControl > 2" class="breadcrumb-item">Data</li>
+          <li *ngIf="stepControl > 2" class="breadcrumb-item">Projetos existentes</li>
         </ol>
       </nav>
     </div>
@@ -22,12 +23,19 @@
             <button (click)="chooseRole(fullName, false)" class="btn btn-primary">Voluntário</button>
           </form>
         </div>
-        <div *ngIf="stepControl == 2">
+        <div *ngIf="stepControl == 2 && isProjectOwner">
           <app-project></app-project>  
           <button (click)="orderCreateProject()" class="btn btn-primary">Criar</button>
         </div>
+        <div *ngIf="stepControl == 2 && !isProjectOwner">
+          <app-project-list
+          [isProjectOwner]='isProjectOwner'
+          [volunteer]='volunteer'>
+          </app-project-list>          
+        </div>
         <div *ngIf="stepControl == 3">
-          <app-project-list>
+          <app-project-list
+          [isProjectOwner]='isProjectOwner'>
           </app-project-list>  
         </div>
       </div>
